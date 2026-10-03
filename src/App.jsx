@@ -1,6 +1,10 @@
 const App = () => {
   return (
-    <div>App</div>
+    <main className="min-h-screen bg-black text-white">
+      <h1 className="text-4x1 font-bold text-red-500">
+        GitHub Analyzer
+      </h1>
+    </main>
   )
 }
 
