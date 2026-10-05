@@ -1,14 +1,14 @@
-import { useState } from "react"
+const SearchSection = ({username, setUsername, onSearch}) => {
 
-const SearchSection = () => {
-  const [username, setUsername] = useState("");
-
-  function handleSubmit(event) {
+  function handleSubmit (event) {
     event.preventDefault();
 
-    console.log(username)
-  }
+    if(!username.trim()) {
+      return;
+    }
 
+    onSearch(username.trim())
+  }
   return (
     <section className="px-6 py-24">
       <div className="mx-auto max-w-4xl text-center">
