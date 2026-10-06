@@ -15,6 +15,18 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const [repositorySearch, setRepositorySearch] = useState("")
+  
+  const filteredRepositories = repositories.filter((repo) => {
+    const searchTerm = repositorySearch.toLocaleLowerCase();
+
+    return (
+      repo.name.toLowerCase().includes(searchTerm) || 
+      repo.description?.toLowerCase().includes(searchTerm)
+    );
+  });
+
+
   async function fetchGitHubData(username) {
     try {
       setLoading(true);
@@ -109,7 +121,12 @@ function App() {
             }}
           />
 
-          <RepositoryList repositories={repositories} />
+          <RepositoryList 
+            repositories={filteredRepositories}
+            search={repositorySearch}
+            setSearch={setRepositorySearch}
+          />
+
         </div>
       )}
     </main>
